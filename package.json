@@ -1,6 +1,6 @@
 {
   "name": "progressive-webp-loader",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Load webp images progressively with webpack",
   "main": "loader.js",
   "repository": {
