@@ -9,7 +9,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.jpg/,
+        test: /.(jpg|png)/,
         use: {
           loader: path.resolve(__dirname, '../loader.js'),
           options: {
