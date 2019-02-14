@@ -1,21 +1,21 @@
 # progressive-webp-loader
-Load WebP images progressively with webpack 4. 
+Load WebP images progressively with webpack 4.
 Inspired by [webp-loader](https://www.npmjs.com/package/webp-loader).
 
 ## Installation
-```npm i --save-dev progressive-webp-loader``` 
+```npm i --save-dev progressive-webp-loader```
 
 ## Options
 `name`
-* Type: `String` 
+* Type: `String`
 * Default: `[path][name].[ext]`
 
 `context`
-* Type: `String` 
+* Type: `String`
 * Default: context
 
 ## Basic Configuration
-```js 
+```js
 // webpack.config.js
 
 module.exports = {
@@ -69,7 +69,7 @@ module.exports = {
           options: {
             context: path.resolve(__dirname, 'foo/bar')
           }
-        }        
+        }
       }
     ]
   }
@@ -83,15 +83,15 @@ import image from './test.jpg'
 
 const Foo = () => {
   return (
-    <picture>      
+    <picture>
       {/* WebP image for browsers that support it  */}
-      <source srcSet={image.webp} type='image/webp' />
-      
+      <source srcSet={image.webp.src} type={image.webp.type} />
+
       {/* Fallback image for browsers that don't support WebP  */}
-      <source srcSet={image.original} type='image/jpeg' />
-      
+      <source srcSet={image.original.src} type={image.original.type} />
+
       {/* Fallback iamge for browsers that don't support srcset  */}
-      <img src={image.original} />
+      <img src={image.original.src} />
     </picture>
   )
 }

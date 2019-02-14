@@ -3,6 +3,7 @@ const imagemin = require('imagemin')
 const imageminWebp = require('imagemin-webp')
 const validateOptions = require('schema-utils')
 const { getOptions, interpolateName } = require('loader-utils')
+const mime = require('mime-types')
 
 const schema = {
   type: 'object',
@@ -37,12 +38,20 @@ module.exports = function(source) {
   const name = interpolateName(this, options.name, nameOptions)
   const webpName = interpolateName(this, options.name.replace('[ext]', 'webp'), nameOptions)
 
+  const getFileInfo = filename => ({
+    src: filename,
+    type: mime.lookup(filename.split('?')[0])
+  })
+
   imagemin
     .buffer(source, {
       plugins: imageminWebp(options.imageminWebOptions)
     })
     .then(webpSource => {
-      const data = { original: name, webp: webpName }
+      const data = {
+        original: getFileInfo(name, source),
+        webp: getFileInfo(webpName, webpSource)
+      }
 
       this.emitFile(name, source)
       this.emitFile(webpName, webpSource)
