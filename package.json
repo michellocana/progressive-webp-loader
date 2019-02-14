@@ -1,0 +1,36 @@
+{
+  "name": "progressive-webp-loader",
+  "version": "0.1.0",
+  "description": "Load webp images progressively with webpack",
+  "main": "loader.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michellocana/progressive-webp-loader"
+  },
+  "scripts": {
+    "test": "webpack --config test/webpack.config.js"
+  },
+  "keywords": [
+    "webpack",
+    "webpack loader",
+    "webp",
+    "progressive images"
+  ],
+  "author": {
+    "name": "Michell Ocaña",
+    "url": "https://github.com/michellocana"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "imagemin": "^6.1.0",
+    "imagemin-webp": "^5.0.0",
+    "lodash": "^4.17.11"
+  },
+  "peerDependencies": {
+    "webpack": "4.x"
+  }
+}
